@@ -48,6 +48,37 @@ MongoDB.ready(function()
     print('Connect DB')
 end)
 ```
+> Library insert/insertOne
+
+Sync
+```lua
+-- insert
+local insertUsers = {}
+for i = 1, 10 do
+    table.insert(insertUsers, { username = "User"..i, password = "123456" })
+end
+local result =  MongoDB.Sync.insert({collection = 'users',documents = insertUsers})
+
+-- insertOne
+local result =  MongoDB.Sync.insertOne({collection = 'users',document = {username = 'steam:xxxxxxxxxxxxxx'}})
+```
+
+Async
+```lua
+-- insert
+local insertUsers = {}
+for i = 1, 10 do
+    table.insert(insertUsers, { username = "User"..i, password = "123456" })
+end
+MongoDB.Async.insert({collection = 'users',documents = insertUsers},function(success,result) 
+       
+end)
+
+-- insertOne
+MongoDB.Async.insertOne({collection = 'users',document = {username = 'steam:xxxxxxxxxxxxxx'}},function(success,result) 
+       
+end)
+```
 
 ## exports.mongodb.isConnected
 * Returns boolean
