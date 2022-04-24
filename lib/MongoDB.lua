@@ -34,6 +34,32 @@ MongoDB.Sync.insertOne = function(params)
     until Query
     return status, data
 end
+MongoDB.Sync.find = function(params)
+    local data,Query = 0,false
+    exports.mongodb:find(params, function(success, result)
+        if success then
+            data = result
+        end
+        Query = true
+    end)
+    repeat 
+        Wait(0) 
+    until Query
+    return data
+end
+MongoDB.Sync.findOne = function(params)
+    local data,Query = 0,false
+    exports.mongodb:findOne(params, function(success, result)
+        if success then
+            data = result
+        end
+        Query = true
+    end)
+    repeat 
+        Wait(0) 
+    until Query
+    return data
+end
 
 -- Async Function
 MongoDB.Async.insert = function(params,cb)
@@ -43,6 +69,15 @@ end
 MongoDB.Async.insertOne = function(params,cb)
     exports.mongodb:insertOne(params, cb)
 end
+
+MongoDB.Async.find = function(params,cb)
+    exports.mongodb:find(params, cb)
+end
+
+MongoDB.Async.findOne = function(params,cb)
+    exports.mongodb:findOne(params, cb)
+end
+
 -- MongoDB.ready
 MongoDB.ready = function(cb)
     CreateThread(function()

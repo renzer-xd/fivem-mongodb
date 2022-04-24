@@ -48,7 +48,7 @@ MongoDB.ready(function()
     print('Connect DB')
 end)
 ```
-> Library insert/insertOne
+> ## Library insert/insertOne
 
 Sync
 ```lua
@@ -61,6 +61,12 @@ local result =  MongoDB.Sync.insert({collection = 'users',documents = insertUser
 
 -- insertOne
 local result =  MongoDB.Sync.insertOne({collection = 'users',document = {username = 'steam:xxxxxxxxxxxxxx'}})
+
+-- find
+local result =  MongoDB.Sync.find({collection = 'users',query = {}})
+
+-- findOne
+local result =  MongoDB.Sync.findOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c1cfdc4'}})
 ```
 
 Async
@@ -71,12 +77,46 @@ for i = 1, 10 do
     table.insert(insertUsers, { username = "User"..i, password = "123456" })
 end
 MongoDB.Async.insert({collection = 'users',documents = insertUsers},function(success,result) 
-       
+    --    code
 end)
 
 -- insertOne
 MongoDB.Async.insertOne({collection = 'users',document = {username = 'steam:xxxxxxxxxxxxxx'}},function(success,result) 
-       
+    --    code
+end)
+
+-- find
+MongoDB.Async.find({collection = 'users',query = {}},function(success,result) 
+    --    code
+end)
+
+-- findOne
+MongoDB.Async.findOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c1cfdc4'}},function(success,result) 
+    --    code
+end)
+```
+
+> ## Library find/findOne
+
+Sync
+```lua
+-- find
+local result =  MongoDB.Sync.find({collection = 'users',query = {}})
+
+-- findOne
+local result =  MongoDB.Sync.findOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c1cfdc4'}})
+```
+
+Async
+```lua
+-- find
+MongoDB.Async.find({collection = 'users',query = {}},function(success,result) 
+    --    code
+end)
+
+-- findOne
+MongoDB.Async.findOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c1cfdc4'}},function(success,result) 
+    --    code
 end)
 ```
 
