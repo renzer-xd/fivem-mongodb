@@ -61,6 +61,34 @@ MongoDB.Sync.findOne = function(params)
     return data
 end
 
+MongoDB.Sync.update = function(params)
+    local data,Query = 0,false
+    exports.mongodb:update(params, function(success, updatedCount)
+        if success then
+            data = updatedCount
+        end
+        Query = true
+    end)
+    repeat 
+        Wait(0) 
+    until Query
+    return data
+end
+
+MongoDB.Sync.updateOne = function(params)
+    local data,Query = 0,false
+    exports.mongodb:updateOne(params, function(success, updatedCount)
+        if success then
+            data = updatedCount
+        end
+        Query = true
+    end)
+    repeat 
+        Wait(0) 
+    until Query
+    return data
+end
+
 -- Async Function
 MongoDB.Async.insert = function(params,cb)
     exports.mongodb:insert(params, cb)
@@ -76,6 +104,13 @@ end
 
 MongoDB.Async.findOne = function(params,cb)
     exports.mongodb:findOne(params, cb)
+end
+
+MongoDB.Async.update = function(params,cb)
+    exports.mongodb:update(params, cb)
+end
+MongoDB.Async.updateOne = function(params,cb)
+    exports.mongodb:updateOne(params, cb)
 end
 
 -- MongoDB.ready

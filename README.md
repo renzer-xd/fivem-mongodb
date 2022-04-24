@@ -119,6 +119,29 @@ MongoDB.Async.findOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c1c
     --    code
 end)
 ```
+> ## Library update/updateOne
+
+Sync
+```lua
+-- update
+local result =  MongoDB.Sync.update({collection = 'users',query = {},update = { ["$set"] = { password = "1234567890" } }})
+
+-- updateOne
+ocal result =  MongoDB.Sync.updateOne({collection = 'users2',query = {_id = '6264f3cb87acf94a8c1cfdc4'},update = { ["$set"] = { username = "steam:xxxxxxxxxxxxxx2" } }})
+```
+
+Async
+```lua
+-- find
+MongoDB.Async.update({collection = 'users',query = {},update = { ["$set"] = { password = "123" } }},function(success) 
+    --    code
+end)
+
+-- updateOne
+MongoDB.Async.updateOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c1cfdc4'},update = { ["$set"] = { username = "steam:xxxxxxxxxxxxxx1" } }},function(success) 
+    --    code
+end)
+```
 
 ## exports.mongodb.isConnected
 * Returns boolean
