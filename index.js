@@ -7,12 +7,14 @@ const dbName = GetConvar("mongodb_database", "changeme");
 let db;
 
 if (url != "changeme" && dbName != "changeme") {
-    mongodb.MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
+    let isReady = false;
+    mongodb.MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
         if (err) return console.log("[MongoDB][ERROR] Failed to connect: " + err.message);
         db = client.db(dbName);
-
+        global.exports('is_ready', () => isReady);
         console.log(`[MongoDB] Connected to database "${dbName}".`);
         emit("onDatabaseConnect", dbName);
+        isReady = true;
     });
 } else {
     if (url == "changeme") console.log(`[MongoDB][ERROR] Convar "mongodb_url" not set (see README)`);

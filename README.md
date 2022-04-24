@@ -1,6 +1,11 @@
 # FiveM MongoDB wrapper
 ## Description
-This resource is a simple MongoDB wrapper for [FiveM](https://fivem.net/). It's running on top of [MongoDB Node Driver](https://mongodb.github.io/node-mongodb-native/).
+* Author: [alcoholiclobster](https://github.com/alcoholiclobster/fivem-mongodb)
+
+* Modifier: [RenZer](https://github.com/renzer-xd/fivem-mongodb)
+
+* This resource is a simple MongoDB wrapper for [FiveM](https://fivem.net/). It's running on top of [MongoDB Node Driver](https://mongodb.github.io/node-mongodb-native/).
+# Discord [Here](https://discord.gg/CgzETuC44J)
 
 ## Installation
 
@@ -14,7 +19,7 @@ start mongodb
 4. Change `mongodb_url` and `mongodb_database` in `database.cfg`.
 5. Run `npm install` in `resources/mongodb` directory.
 
-## Usage
+# Usage Exports
 
 Every callback accepts `success<boolean>` as its first argument. If `success` is `false`, second argument contains error message.
 
@@ -27,6 +32,20 @@ exports.mongodb:findOne({ collection = "users", query = { _id = id } }, function
     end
 
     print("User name is "..tostring(result[1].name))
+end)
+```
+# Usage Library
+> Add Library for fivem (Lua): fxmanifest.lua
+```lua
+server_scripts {
+    '@mongodb/mongo.lua',
+    ...
+}
+```
+> Library Ready
+```lua
+MongoDB.ready(function() 
+    print('Connect DB')
 end)
 ```
 
