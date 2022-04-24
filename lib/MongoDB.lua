@@ -89,6 +89,48 @@ MongoDB.Sync.updateOne = function(params)
     return data
 end
 
+MongoDB.Sync.count = function(params)
+    local data,Query = 0,false
+    exports.mongodb:count(params, function(success, count)
+        if success then
+            data = count
+        end
+        Query = true
+    end)
+    repeat 
+        Wait(0) 
+    until Query
+    return data
+end
+
+MongoDB.Sync.delete = function(params)
+    local data,Query = 0,false
+    exports.mongodb:delete(params, function(success, deletedCount)
+        if success then
+            data = deletedCount
+        end
+        Query = true
+    end)
+    repeat 
+        Wait(0) 
+    until Query
+    return data
+end
+
+MongoDB.Sync.deleteOne = function(params)
+    local data,Query = 0,false
+    exports.mongodb:deleteOne(params, function(success, deletedCount)
+        if success then
+            data = deletedCount
+        end
+        Query = true
+    end)
+    repeat 
+        Wait(0) 
+    until Query
+    return data
+end
+
 -- Async Function
 MongoDB.Async.insert = function(params,cb)
     exports.mongodb:insert(params, cb)
@@ -109,8 +151,21 @@ end
 MongoDB.Async.update = function(params,cb)
     exports.mongodb:update(params, cb)
 end
+
 MongoDB.Async.updateOne = function(params,cb)
     exports.mongodb:updateOne(params, cb)
+end
+
+MongoDB.Async.count = function(params,cb)
+    exports.mongodb:count(params, cb)
+end
+
+MongoDB.Async.delete = function(params,cb)
+    exports.mongodb:delete(params, cb)
+end
+
+MongoDB.Async.deleteOne = function(params,cb)
+    exports.mongodb:deleteOne(params, cb)
 end
 
 -- MongoDB.ready

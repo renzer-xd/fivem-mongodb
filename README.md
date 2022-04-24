@@ -142,6 +142,45 @@ MongoDB.Async.updateOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c
     --    code
 end)
 ```
+> ## Library count
+
+Sync
+```lua
+-- count
+local result =  MongoDB.Sync.count({collection = 'users'})
+```
+
+Async
+```lua
+-- count
+MongoDB.Async.count({collection = 'users'},function(success,result) 
+    --    code
+end)
+```
+
+> ## Library delete/deleteOne
+
+Sync
+```lua
+-- delete
+local result =  MongoDB.Sync.delete({collection = 'users',query = {}})
+
+-- deleteOne
+local result =  MongoDB.Sync.deleteOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c1cfdc4'}})
+```
+
+Async
+```lua
+-- delete
+MongoDB.Async.delete({collection = 'users',query = {}},function(success,result) 
+    --    code
+end)
+
+-- deleteOne
+MongoDB.Async.deleteOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c1cfdc4'}},function(success,result) 
+    --    code
+end)
+```
 
 ## exports.mongodb.isConnected
 * Returns boolean
