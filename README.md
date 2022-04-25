@@ -62,11 +62,6 @@ local result =  MongoDB.Sync.insert({collection = 'users',documents = insertUser
 -- insertOne
 local result =  MongoDB.Sync.insertOne({collection = 'users',document = {username = 'steam:xxxxxxxxxxxxxx'}})
 
--- find
-local result =  MongoDB.Sync.find({collection = 'users',query = {}})
-
--- findOne
-local result =  MongoDB.Sync.findOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c1cfdc4'}})
 ```
 
 Async
@@ -85,15 +80,6 @@ MongoDB.Async.insertOne({collection = 'users',document = {username = 'steam:xxxx
     --    code
 end)
 
--- find
-MongoDB.Async.find({collection = 'users',query = {}},function(success,result) 
-    --    code
-end)
-
--- findOne
-MongoDB.Async.findOne({collection = 'users',query = {_id = '6264f3cb87acf94a8c1cfdc4'}},function(success,result) 
-    --    code
-end)
 ```
 
 > ## Library find/findOne
