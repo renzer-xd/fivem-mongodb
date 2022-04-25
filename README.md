@@ -38,7 +38,7 @@ end)
 > Add Library for fivem (Lua): fxmanifest.lua
 ```lua
 server_scripts {
-    '@mongodb/mongo.lua',
+    '@mongodb/lib/MongoDB.lua',
     ...
 }
 ```
